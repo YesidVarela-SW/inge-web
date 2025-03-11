@@ -1,0 +1,25 @@
+body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    margin: 50px; 
+}
+
+input, button { 
+    margin: 10px; 
+    padding: 10px; 
+}
+
+#mensaje { 
+    font-weight: bold; 
+    font-size: 18px;
+    margin-top: 10px;
+    display: none; /* Ocultar mensaje por defecto */
+}
+
+.valido { 
+    color: green; 
+}
+
+.invalido { 
+    color: red; 
+}
