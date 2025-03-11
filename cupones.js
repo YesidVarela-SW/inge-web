@@ -1,7 +1,7 @@
 let cupones = [];
 
 function generarCupon() {
-    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#!¡&%¿?=/*-|°¬^[](){};:";
     let cupon = "";
 
     for (let i = 0; i < 10; i++) {
