@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Gestión de Empleados</title>
+    <style> /* Estilos básicos para mejorar la apariencia */ body { font-family: sans-serif; } .dataTable { border-collapse: collapse; width: 100%; } .dataTable th, .dataTable td { border: 1px solid #ddd; padding: 8px; } </style>
+</h:head>
+<h:body>
+    <h1>Módulo de Recursos Humanos</h1>
+    <h:messages globalOnly="true" />
+
+    <h:form>
+        <h3>Crear / Editar Empleado</h3>
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="firstName" value="Nombre:"/>
+            <h:inputText id="firstName" value="#{employeeBean.selectedEmployee.firstName}" required="true" label="Nombre"/>
+
+            <h:outputLabel for="lastName" value="Apellido:"/>
+            <h:inputText id="lastName" value="#{employeeBean.selectedEmployee.lastName}" required="true" label="Apellido"/>
+
+            <h:outputLabel for="email" value="Email:"/>
+            <h:inputText id="email" value="#{employeeBean.selectedEmployee.email}" required="true" label="Email"/>
+
+            <h:outputLabel for="position" value="Cargo:"/>
+            <h:inputText id="position" value="#{employeeBean.selectedEmployee.position}"/>
+
+            <h:outputLabel for="hireDate" value="Fecha Contratación (YYYY-MM-DD):"/>
+            <h:inputText id="hireDate" value="#{employeeBean.selectedEmployee.hireDate}" required="true" label="Fecha Contratación">
+                <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+            </h:inputText>
+        </h:panelGrid>
+        <h:commandButton value="Guardar" action="#{employeeBean.save}"/>
+        <h:commandButton value="Limpiar Formulario" action="#{employeeBean.prepareNew}" immediate="true"/>
+    </h:form>
+
+    <hr/>
+
+    <h2>Lista de Empleados</h2>
+    <h:form>
+        <h:dataTable value="#{employeeBean.employeeList}" var="emp" styleClass="dataTable">
+            <h:column><f:facet name="header">ID</f:facet>#{emp.id}</h:column>
+            <h:column><f:facet name="header">Nombre</f:facet>#{emp.firstName}</h:column>
+            <h:column><f:facet name="header">Apellido</f:facet>#{emp.lastName}</h:column>
+            <h:column><f:facet name="header">Email</f:facet>#{emp.email}</h:column>
+            <h:column><f:facet name="header">Cargo</f:facet>#{emp.position}</h:column>
+            <h:column><f:facet name="header">Contratación</f:facet>#{emp.hireDate}</h:column>
+            <h:column>
+                <f:facet name="header">Acciones</f:facet>
+                <h:commandButton value="Editar" action="#{employeeBean.setSelectedEmployee(emp)}"/>
+                &#160;
+                <h:commandButton value="Eliminar" action="#{employeeBean.delete(emp.id)}" onclick="return confirm('¿Está seguro de eliminar a este empleado?')"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+</h:body>
+</html>

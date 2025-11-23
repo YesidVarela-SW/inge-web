@@ -1,0 +1,4 @@
+com\ejemplo\app\App.class
+com\unimanuela\erp\hr\web\EmployeeBean.class
+com\unimanuela\erp\hr\entity\Employee.class
+com\unimanuela\erp\hr\service\EmployeeService.class
